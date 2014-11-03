@@ -2,7 +2,7 @@
 hostname = 0.0.0.0
 
 [audio]
-output = lame ! shout2send mount=mopidy ip=0.0.0.0 port=8002
+output = lame ! shout2send mount=mopidy ip=0.0.0.0 port=8000
 
 [stream]
 enabled = true

@@ -42,6 +42,13 @@ RUN mkdir -p /home/mopidy/music
 
 RUN git clone https://github.com/martijnboland/moped.git /home/mopidy/src/webclients/moped
 
+ADD usr/share/icecast2/web/2sec.mp3 /usr/share/icecast2/web/2sec.mp3
+ADD usr/share/icecast1/web/1sec.mp3 /usr/share/icecast1/web/1sec.mp3
+RUN chown -R icecast2 /usr/share/icecast2
+
+ADD etc/icecast2/icecast.xml /etc/icecast2/icecast.xml
+RUN chown -R icecast2 /etc/icecast2
+
 ADD templates /home/mopidy/templates
 ADD start.sh /home/mopidy/start.sh
 
@@ -49,8 +56,9 @@ RUN chown -R mopidy /home/mopidy
 RUN chmod +x /home/mopidy/start.sh
 
 
-EXPOSE 6680
 EXPOSE 6600
+EXPOSE 6680
+EXPOSE 8000
 EXPOSE 8002
 
 ENTRYPOINT /home/mopidy/start.sh

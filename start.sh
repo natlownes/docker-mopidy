@@ -31,6 +31,8 @@ df -h
 
 envtpl < ${template_dir}/mopidy.conf.tpl > /home/mopidy/mopidy.conf
 
+su icecast2 -s /bin/bash -c "icecast2 -b -c /etc/icecast2/icecast.xml"
+
 cat /home/mopidy/mopidy.conf
 
 mopidy \
